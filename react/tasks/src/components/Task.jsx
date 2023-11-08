@@ -6,7 +6,9 @@ const Task = ({ task, onClickValidate }) => {
       <div>
         <button
           onClick={() => { onClickValidate(task.id) }}
-          className="btn btn-success me-3">Valider</button>
+          className="btn btn-success me-3">
+          {task.done ? 'Invalider' : "Valider"}
+          </button>
         <button className="btn btn-danger">Supprimer</button>
       </div>
     </section>
