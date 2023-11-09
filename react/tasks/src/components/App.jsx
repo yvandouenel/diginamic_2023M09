@@ -1,12 +1,24 @@
 import './App.css';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Task from './Task';
+import JsonServer from '../services/JsonServer';
 
 function App() {
-
   // Déclaration de l'état tasks qui est un tableau d'objets de task
-  const [tasks, setTasks] = useState();
+  const [tasks, setTasks] = useState([]);
 
+  // Appel de useEffect qui sera exécuté juste aprés le premier chargement du composant App.jsx
+  useEffect(() => {
+    (async ()=>{
+      const loadedTasks = await JsonServer.loadTasks();
+      console.log(`loadedTasks`, loadedTasks);
+      setTasks(loadedTasks);
+    })();
+   
+    
+  },[])
+  
+  
   function handleClickValidate(id) {
     console.log(`Dans handleClickValidate, id : `, id);
     // Changer le done qui se trouve dans l'état tasks
