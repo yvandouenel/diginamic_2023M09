@@ -37,11 +37,22 @@ function App() {
 
     // Modification du state en utilisant setTasks
     setTasks(tasksUpdated);
+
+    // Appel du serveur d'API REST avec le verbe DELETE
+    JsonServer.removeTask(id);
   }
   function handleSubmitAdd(taskName) {
     console.log(`Dans handleSubmitAdd, id : `);
     // Ajout d'une tâche dans la copie de tasks
-    const tasksUpdated = [...tasks, { name: taskName, id: tasks.length + 1, done: false }];
+    const newTask = { name: taskName, done: false };
+    
+
+    // Appel au serveur pour l'ajout de la tâche
+    console.log(`newTask dans handleSubmitAdd`, newTask);
+    JsonServer.addTask(newTask);
+
+    newTask.id = tasks.length + 1;
+    const tasksUpdated = [...tasks, newTask ];
 
     // Modification du state en utilisant setTasks
     setTasks(tasksUpdated);
