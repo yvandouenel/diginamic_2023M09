@@ -1,4 +1,4 @@
-const Task = ({ task, onClickValidate }) => {
+const Task = ({ task, onClickValidate, onClickRemove }) => {
   return (
     <section className="d-flex justify-content-between my-2">
 
@@ -6,10 +6,12 @@ const Task = ({ task, onClickValidate }) => {
       <div>
         <button
           onClick={() => { onClickValidate(task.id) }}
-          className="btn btn-success me-3">
+          className="btn btn-success me-3"> 
           {task.done ? 'Invalider' : "Valider"}
           </button>
-        <button className="btn btn-danger">Supprimer</button>
+        <button 
+        onClick={() => { onClickRemove(task.id) }}
+        className="btn btn-danger">Supprimer</button>
       </div>
     </section>
   );

@@ -14,13 +14,21 @@ function App() {
   function handleClickValidate(id) {
     console.log(`Dans handleClickValidate, id : `, id);
     // Changer le done qui se trouve dans l'état tasks
-    const taskUpdated = tasks.map(task => {
-      if(task.id === id) task.done = !task.done;
+    const tasksUpdated = tasks.map(task => {
+      if (task.id === id) task.done = !task.done;
       return task
     })
 
     // Modification du state en utilisant setTasks
-    setTasks(taskUpdated)
+    setTasks(tasksUpdated);
+  }
+  function handleClickRemove(id) {
+    console.log(`Dans handleClickRemove, id : `, id);
+    // filtre du table tasks et stockage dans tasksUpdated
+    const tasksUpdated = tasks.filter(task => task.id !== id);
+
+    // Modification du state en utilisant setTasks
+    setTasks(tasksUpdated);
   }
 
   return (
@@ -31,6 +39,7 @@ function App() {
           key={task.id}
           task={task}
           onClickValidate={handleClickValidate}
+          onClickRemove={handleClickRemove}
         />)}
 
     </div>
