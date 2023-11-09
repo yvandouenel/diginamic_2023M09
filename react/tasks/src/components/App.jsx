@@ -5,11 +5,7 @@ import Task from './Task';
 function App() {
 
   // Déclaration de l'état tasks qui est un tableau d'objets de task
-  const [tasks, setTasks] = useState([
-    { id: 1, name: "Faire la vaisselle", done: false },
-    { id: 2, name: "Essuyer la vaisselle", done: true },
-    { id: 3, name: "Ranger la vaisselle", done: true }
-  ]);
+  const [tasks, setTasks] = useState();
 
   function handleClickValidate(id) {
     console.log(`Dans handleClickValidate, id : `, id);
