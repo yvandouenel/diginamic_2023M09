@@ -73,4 +73,30 @@ export default class JsonServer {
         console.error(error);
       })
   }
+  /**
+   * 
+   * @returns Promise<Task>
+   */
+  static async patchTask(id, partialTask) {
+    return fetch(JsonServer.url + id,
+      {
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        method: "PATCH",
+        body: JSON.stringify(partialTask)
+      })
+      .then(function (res) { 
+        console.log(res.status);
+        return res.json();
+      })
+      .then(function (task) { 
+        console.log(`task modifiée : `, task);
+        return task;
+       })
+      .catch(function (error) {
+        console.error(error);
+      })
+  }
 }
